@@ -1,32 +1,64 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap');
 
 :root {
-  --border-color: #144fc6;
+  --border-color: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
   --fill-color: #6ab3f8;
 }
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  background-color: #3494e4;
-  color: #fff;
+#wrapper{
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+  color: black;
   font-family: 'Montserrat', sans-serif;
+
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+}
+
+header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 40px;
+  font-size: 3rem;
 }
 
-h1 {
-  margin: 10px 0 0;
+
+main{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
 }
 
-h3 {
-  font-weight: 400;
-  margin: 10px 0;
+.left-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
 }
+
+.right-section{
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
 
 .cup {
   background-color: #fff;
@@ -39,11 +71,12 @@ h3 {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  transform: translate(2);
 }
 
 .cup.cup-small {
-  height: 95px;
-  width: 50px;
+  height: 10rem;
+  width: 5rem;
   border-radius: 0 0 15px 15px;
   background-color: rgba(255, 255, 255, 0.9);
   cursor: pointer;
@@ -57,15 +90,13 @@ h3 {
 
 .cup.cup-small.full {
   background-color: var(--fill-color);
-  color: #fff;
+  color: white;
 }
 
 .cups {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  width: 280px;
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .remained {
@@ -102,22 +133,23 @@ h3 {
   text-align: center;
   margin: 0 0 5px;
 }
-*{
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
+
 footer{
   background-color: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: space-around;
+  gap: 10px;
 }
-.footerContainer{
-  width: 100%;
-  padding: 70px 30px 20px ;
-}
+
 .socialIcons{
+  width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }
+
 .socialIcons a{
   text-decoration: none;
   padding:  10px;
@@ -126,10 +158,11 @@ footer{
   border-radius: 50%;
 }
 .socialIcons a i{
-  font-size: 2em;
+  font-size: 1em;
   color: black;
   opacity: 0,9;
 }
+
 /* Hover affect on social media icon */
 .socialIcons a:hover{
   background-color: #111;
@@ -139,29 +172,30 @@ footer{
   color: white;
   transition: 0.5s;
 }
+
 .footerNav{
-  margin: 30px 0;
-}
-.footerNav ul{
   display: flex;
   justify-content: center;
   list-style-type: none;
+  gap: 10px;
 }
-.footerNav ul li a{
+.footerNav li a{
   color:white;
-  margin: 20px;
+  margin: 20px 4;
   text-decoration: none;
-  font-size: 1.3em;
+  font-size: 1em;
   opacity: 0.7;
   transition: 0.5s;
 
 }
-.footerNav ul li a:hover{
+.footerNav li a:hover{
   opacity: 1;
 }
 .footerBottom{
-  background-color: #000;
-  padding: 20px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 .footerBottom p{
@@ -186,5 +220,95 @@ footer{
   .socialIcons a{
       padding: 8px;
       margin: 4px;
+  }
+}
+
+@media (max-width: 1024px) {
+  header {
+    font-size: 2.5rem;
+  }
+
+  main {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .left-section,
+  .right-section {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    font-size: 2rem;
+  }
+
+  .cups {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .cup {
+    height: 250px;
+    width: 120px;
+  }
+
+  .cup.cup-small {
+    height: 8rem;
+    width: 4rem;
+  }
+
+  .footerNav {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  main {
+    gap: 1rem;
+  }
+
+  .cups {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .cup {
+    height: 200px;
+    width: 100px;
+  }
+
+  .cup.cup-small {
+    height: 6rem;
+    width: 3rem;
+    font-size: 12px;
+  }
+
+  .socialIcons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .footerNav {
+    gap: 0.5rem;
+  }
+
+  .footerNav li a {
+    font-size: 0.9em;
+  }
+
+  .footerBottom {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
   }
 }
